@@ -11,3 +11,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
+
+function toggleMenu() {
+  const menu = document.querySelector('#nav-menu ul');
+  menu.classList.toggle('show');
+}
+
