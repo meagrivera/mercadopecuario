@@ -1,161 +1,217 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+<!-- Google Tag Manager -->
+<script>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NP2JBV4L');
+</script>
+<!-- End Google Tag Manager -->
+
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bolsa de Trabajo</title>
-  <link rel="icon" href="favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --main-color: #00aaff;
-      --text-color: #222;
-      --bg-color: #ffffff;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mercado Pecuario Nicaragua | Compra y Venta de Animales</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Plataforma gratuita para comprar y vender ganado en Nicaragua. Publica anuncios, encuentra animales y potencia tu negocio agropecuario con tecnología.">
+  <meta name="keywords" content="mercado pecuario, ganado, nicaragua, compra venta de animales, app ganadera, agropecuario, tecnología rural">
+  <meta name="author" content="Mercado Pecuario">
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph (para redes sociales) -->
+  <meta property="og:title" content="Mercado Pecuario Nicaragua" />
+  <meta property="og:description" content="Compra y venta de animales fácil desde tu celular." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mercadopecuario.com/" />
+  <meta property="og:image" content="https://mercadopecuario.com/poster1.jpg" />
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Mercado Pecuario",
+    "url": "https://mercadopecuario.com/",
+    "description": "Plataforma gratuita para compra y venta de ganado en Nicaragua.",
+    "inLanguage": "es",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mercado Pecuario"
     }
+  }
+  </script>
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      line-height: 1.6;
-    }
-
-    header {
-      padding: 2rem 1rem;
-      text-align: center;
-      animation: fadeIn 1s ease-in;
-    }
-
-    .logo {
-      max-width: 120px;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-      color: var(--main-color);
-    }
-
-    p {
-      max-width: 700px;
-      margin: 1rem auto;
-      font-size: 1.1rem;
-      color: #444;
-    }
-
-    .download-btn {
-      display: inline-block;
-      margin-top: 1.5rem;
-      background-color: var(--main-color);
-      color: white;
-      text-decoration: none;
-      padding: 0.9rem 2rem;
-      border-radius: 8px;
-      font-weight: 600;
-      transition: background-color 0.3s ease;
-    }
-
-    .download-btn:hover {
-      background-color: #008fcc;
-    }
-
-    .video-container {
-      max-width: 800px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-      animation: fadeIn 1.5s ease-in;
-    }
-
-    iframe {
-      width: 100%;
-      height: 450px;
-      border: none;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .contact {
-      margin-top: 2rem;
-      font-size: 1rem;
-      color: #444;
-      text-align: center;
-    }
-
-    footer {
-      margin-top: 4rem;
-      text-align: center;
-      padding: 2rem 1rem;
-      font-size: 0.9rem;
-      color: #888;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.5rem;
-      }
-
-      iframe {
-        height: 250px;
-      }
-
-      .download-btn {
-        padding: 0.8rem 1.5rem;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <!-- Estilos y Scripts -->
+  <link rel="stylesheet" href="styles.css" />
+  <script defer src="scripts.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 </head>
-<body>
 
-  <header>
-    <img src="logo.png" alt="Logo Bolsa de Trabajo" class="logo" />
-    <h1>Bolsa de Trabajo</h1>
-    <p>
-      Bolsa de Trabajo es una aplicación gratuita diseñada especialmente para facilitar el acceso al empleo en Nicaragua. Puedes publicar o buscar empleos de forma rápida y sin necesidad de registrarte.
-      <br><br>
-      Ideal para trabajadores de oficios, construcción y servicios. Totalmente adaptada a teléfonos de gama baja, con un diseño limpio, claro y funcional.
-      <br><br>
-      Los empleadores pueden describir sus ofertas tan detalladamente como quieran, incluyendo texto y fotos. Las descripciones pueden ser tan largas como deseen.
-      <br><br>
-      Nuestra prioridad es hacer que encontrar trabajo o talento sea tan fácil como enviar un mensaje.
-    </p>
-    <a href="https://bit.ly/4jWmG0z" class="download-btn">Descargar APK</a>
+
+<body>
+<!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2JBV4L"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- NAVBAR -->
+  <header class="navbar neomorph">
+    <div class="logo">
+  <img src="logo-mercado-pecuario.png" alt="Logo Mercado Pecuario" class="logo-img">
+  <span>Mercado Pecuario</span>
+</div>
+    <nav id="nav-menu">
+  <ul>
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#sobre">Sobre Nosotros</a></li>
+    <li><a href="#terminos">Términos</a></li>
+    <li><a href="#politica">Política</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#anunciar">Anúnciate</a></li>
+  </ul>
+</nav>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
   </header>
 
-  <section class="video-container">
-    <h2 style="text-align: center; color: var(--main-color); margin-bottom: 1rem;">Video Tutorial</h2>
-    <iframe src="https://drive.google.com/file/d/1fxA_eAZv3MIbBCYYyd36QUojtt4eNkId/preview" allow="autoplay; fullscreen" allowfullscreen></iframe>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-content neomorph-in">
+      <h1>Tecnología con propósito para transformar vidas</h1>
+      <p>Compra y vende ganado fácil desde tu celular.</p>
+      <a href="#anunciar" class="btn">Quiero Anunciarme</a>
+    </div>
   </section>
 
-  <section class="contact">
-    <p>¿Comentarios o consultas? Puedes escribirme directamente por WhatsApp al <strong>+505 5797 8706</strong>.</p>
+  <!-- SOBRE NOSOTROS -->
+  <section class="section" id="sobre">
+    <h2>Sobre Nosotros</h2>
+     <p>
+    <strong>Mercado Pecuario Nicaragua</strong> es una plataforma gratuita diseñada para transformar la manera en que los productores compran y venden animales en el país. 
+    Nació con el propósito de <strong>empoderar al sector agropecuario</strong>, brindando una herramienta moderna, segura y accesible desde cualquier dispositivo móvil.
+  </p>
+  <p>
+    A través de nuestra aplicación, ganaderos y productores pueden <strong>publicar y encontrar animales en tiempo real</strong>, sin necesidad de intermediarios y con la posibilidad de negociar directamente. 
+    Esto permite <strong>ahorrar tiempo y reducir costos</strong>, al mismo tiempo que fomenta la transparencia y la confianza entre quienes participan en el mercado, y sobre todo, 
+    <strong>potenciar el aprovechamiento del hato ganadero en manos de los productores</strong>.
+  </p>
+  <p>
+    Nuestra misión es impulsar la <strong>transformación digital del sector agropecuario en Nicaragua</strong>, conectando a productores de todas las regiones y facilitando el acceso a un mercado más amplio. 
+    Creemos firmemente en el <strong>comercio justo</strong>, en el valor del esfuerzo de cada productor y en el poder de la tecnología como herramienta para mejorar la vida de las comunidades rurales.
+  </p>
+  <p>
+    Con <strong>Mercado Pecuario</strong>, buscamos construir una comunidad sólida donde la <strong>tradición agropecuaria</strong> se combine con la <strong>innovación tecnológica</strong>, 
+    abriendo nuevas oportunidades para el crecimiento económico y social del campo nicaragüense.
+  </p>
   </section>
 
-    <footer>
-    <p>&copy; 2025 Bolsa de Trabajo. Todos los derechos reservados.</p>
-    <p><a href="privacidad.html" style="color:#00aaff; text-decoration: none;">Política de Privacidad</a></p>
+  <!-- GALERÍA -->
+  <section class="section gallery">
+    <h2>Galería</h2>
+    <div class="image-grid">
+      <img src="poster1.jpg" alt="Póster 1 de Mercado Pecuario">
+      <img src="poster2.jpg" alt="Póster 2 de Mercado Pecuario">
+    </div>
+  </section>
+
+  <!-- TÉRMINOS -->
+  <section class="section" id="terminos">
+    <h2>Términos de Uso</h2>
+    <p>
+    Al utilizar <strong>Mercado Pecuario</strong>, aceptas estos términos y te comprometes a mantener
+    <strong>respeto y responsabilidad</strong> en tus publicaciones. Eres <strong>responsable de la veracidad y legalidad</strong>
+    de toda la información que compartas.
+  </p>
+  <p>
+    No se permite contenido <strong>falso</strong>, <strong>engañoso</strong>, <strong>ilegal</strong>, que
+    <strong>vulnere derechos de terceros</strong> (incluidos derechos de autor, marcas, privacidad o imagen) o que promueva
+    <strong>fraude</strong> o <strong>violencia</strong>.
+  </p>
+  <p>
+    Las <strong>transacciones o acuerdos fuera de la plataforma</strong> son responsabilidad exclusiva de las partes
+    involucradas; <strong>Mercado Pecuario</strong> no se hace responsable por dichos acuerdos ni por pérdidas derivadas de ellos.
+  </p>
+  <p>
+    Nos reservamos el derecho de <strong>moderar, editar, ocultar o eliminar</strong> contenido que infrinja estos términos,
+    así como <strong>suspender o bloquear cuentas</strong> que reincidan en incumplimientos.
+  </p>
+  <p>
+    Puedes <strong>reportar</strong> publicaciones o usuarios que incumplan estos términos mediante los canales disponibles.
+  </p>
+  <p>
+    Podemos <strong>actualizar</strong> estos Términos en cualquier momento; el uso continuo de la plataforma implica la
+    aceptación de las versiones vigentes.
+  </p>
+  </section>
+
+  <!-- POLÍTICA DE INFORMACIÓN -->
+  <section class="section" id="politica">
+  <h2>Política de Privacidad</h2>
+  <p>
+    En <strong>Mercado Pecuario</strong>, nos tomamos muy en serio la privacidad y protección de los datos de nuestros usuarios. Esta aplicación no recopila, almacena ni comparte información personal sensible sin el consentimiento expreso del usuario.
+  </p>
+
+  <p>
+    Los datos que el usuario proporciona de forma voluntaria, como nombre, número de teléfono, ubicación o fotos, se utilizan exclusivamente para el funcionamiento interno de la aplicación, es decir, para mostrar anuncios y facilitar el contacto entre compradores y vendedores de animales.
+  </p>
+
+  <p>
+    No compartimos datos personales con terceros para fines comerciales o publicitarios. La app no realiza seguimiento de actividad fuera de la plataforma, ni utiliza servicios de terceros con fines analíticos sin consentimiento previo.
+  </p>
+
+  <p>
+    Toda la información publicada por los usuarios (anuncios, fotos, descripciones) es visible públicamente dentro de la aplicación, y cada usuario es responsable del contenido que comparte.
+  </p>
+
+  <p>
+    En cualquier momento, el usuario puede solicitar la eliminación de sus datos o anuncios escribiendo a <a href="mailto:chepeadan@gmail.com">chepeadan@gmail.com</a>.
+  </p>
+
+  <p>
+    Esta política puede actualizarse en el futuro para cumplir con requisitos legales o mejorar la transparencia. Recomendamos revisarla periódicamente.
+  </p>
+</section>
+
+  <!-- CONTACTO -->
+  <section class="section" id="contacto">
+    <h2>Contacto para Usuarios</h2>
+    Si tienes dudas sobre cómo publicar, buscar animales o necesitas ayuda con tus anuncios, puedes escribirnos. 
+    En caso de que tengas disponible tu <strong>Anuncio ID</strong>, inclúyelo en el mensaje para que podamos atenderte más rápido.
+  </p>
+  <p>
+    Puedes contactarnos al correo: 
+    <a href="mailto:chepeadan@gmail.com">chepeadan@gmail.com</a>
+  </p>
+  </section>
+
+  <!-- ANÚNCIATE -->
+  <section class="section" id="anunciar">
+    <h2>¿Quieres anunciar tu negocio con nosotros?</h2>
+    <p>
+    Todos los anuncios que no correspondan a la compra o venta de animales —como insumos, transporte, maquinaria u otros servicios relacionados con la actividad pecuaria— tienen un 
+    <strong>costo de publicación</strong>.
+  </p>
+  <p>
+    Al anunciarte en <strong>Mercado Pecuario</strong>, podrás promocionar tus productos o servicios ante miles de productores y compradores en todo el país, llegando directamente a tu público objetivo.
+  </p>
+  <p>
+    Para más información, escríbenos a: 
+    <a href="mailto:chepeadan@gmail.com">chepeadan@gmail.com</a>
+  </p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer neomorph">
+    <p>&copy; 2025 Mercado Pecuario. Todos los derechos reservados.</p>
   </footer>
-
 
 </body>
 </html>
