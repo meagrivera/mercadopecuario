@@ -195,4 +195,30 @@ h1, h2 {
   }
 }
 
+.store-badge-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0 2rem 0;
+}
+
+.google-play-link img {
+  height: 48px;
+  width: auto;
+  border-radius: 6px;
+  transition: transform 0.2s ease;
+}
+
+.google-play-link img:hover {
+  transform: scale(1.05);
+}
+
+.coming-soon {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #d94343; /* rojo profesional */
+}
+
 
