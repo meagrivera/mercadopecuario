@@ -43,19 +43,41 @@
   <meta name="twitter:description" content="Compra y venta de animales fácil desde tu celular." />
   <meta name="twitter:image" content="https://mercadopecuario.com/poster1.jpg" />
 
-  <!-- Schema -->
+  <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
+    "@type": "WebSite",
     "name": "Mercado Pecuario",
     "url": "https://mercadopecuario.com/",
-    "logo": "https://mercadopecuario.com/logo-mercado-pecuario.png",
-    "sameAs": [
-      "https://www.tiktok.com/@mercado.pecuario",
-      "https://www.facebook.com/share/1B9wBxEZxm/",
-      "https://www.youtube.com/@MercadoPecuario"
-    ]
+    "inLanguage": "es",
+    "description": "Plataforma gratuita para compra y venta de ganado en Nicaragua.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://mercadopecuario.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mercado Pecuario",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mercadopecuario.com/logo-mercado-pecuario.png"
+      }
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    "name": "Mercado Pecuario",
+    "operatingSystem": "Android",
+    "applicationCategory": "BusinessApplication",
+    "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"},
+    "downloadUrl": "https://play.google.com/store/apps/details?id=com.mercadopecuario",
+    "installUrl": "https://play.google.com/store/apps/details?id=com.mercadopecuario",
+    "publisher": {"@type": "Organization","name": "Mercado Pecuario"}
   }
   </script>
 
@@ -73,6 +95,10 @@
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2JBV4L"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Skip to content -->
+  <a class="skip-link" href="#inicio">Saltar al contenido</a>
 
   <!-- NAVBAR -->
   <header class="navbar neomorph" role="banner">
@@ -111,73 +137,149 @@
       </div>
 
       <a href="#anunciar" class="btn">Quiero Anunciarme</a>
-<br>
-<br>
-      <!-- Redes sociales debajo del botón -->
-      <div class="social-bar" aria-label="Redes sociales de Mercado Pecuario">
-        <a class="social-link" href="https://www.tiktok.com/@mercado.pecuario" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M21 8.5a6.5 6.5 0 0 1-4.1-1.5v6.3a6.3 6.3 0 1 1-6.3-6.3c.3 0 .6 0 .9.1v3.2a3.1 3.1 0 1 0 2.2 3V2h3.2a6.5 6.5 0 0 0 4.1 6.5Z"/>
-          </svg>
+
+      <!-- Social Bar (debajo del botón) -->
+      <div class="social-bar neomorph" aria-label="Redes sociales de Mercado Pecuario" style="margin-top:1rem;">
+        <a class="social-link" href="https://www.tiktok.com/@mercado.pecuario" target="_blank" rel="noopener noreferrer" aria-label="TikTok de Mercado Pecuario">
+          <!-- TikTok -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 8.5a6.5 6.5 0 0 1-4.1-1.5v6.3a6.3 6.3 0 1 1-6.3-6.3c.3 0 .6 0 .9.1v3.2a3.1 3.1 0 1 0 2.2 3V2h3.2a6.5 6.5 0 0 0 4.1 6.5Z"/></svg>
           <span>TikTok</span>
         </a>
-        <a class="social-link" href="https://www.facebook.com/share/1B9wBxEZxm/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M13 22v-8h3l.6-4H13V7.2c0-1.1.3-1.8 1.9-1.8H17V2.1C16.6 2 15.5 2 14.2 2 11.5 2 9.6 3.7 9.6 6.8V10H7v4h2.6v8h3.4Z"/>
-          </svg>
+
+        <a class="social-link" href="https://www.facebook.com/share/1B9wBxEZxm/" target="_blank" rel="noopener noreferrer" aria-label="Facebook de Mercado Pecuario">
+          <!-- Facebook -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 22v-8h3l.6-4H13V7.2c0-1.1.3-1.8 1.9-1.8H17V2.1C16.6 2 15.5 2 14.2 2 11.5 2 9.6 3.7 9.6 6.8V10H7v4h2.6v8h3.4Z"/></svg>
           <span>Facebook</span>
         </a>
-        <a class="social-link" href="https://www.youtube.com/@MercadoPecuario" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M23 7.5s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.9 3.8 12 3.8 12 3.8h0s-5.9 0-8.1.3c-.4.1-1.3.1-2.1 1C1.2 5.8 1 7.5 1 7.5S.8 9.5.8 11.6v.8C.8 14.5 1 16.5 1 16.5s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 7.8.3 7.8.3s5.9 0 8.1-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-2 .2-3.1v-.8c0-2.1-.2-4.1-.2-4.1ZM9.8 14.9V8.7l6 3.1-6 3.1Z"/>
-          </svg>
+
+        <a class="social-link" href="https://www.youtube.com/@MercadoPecuario" target="_blank" rel="noopener noreferrer" aria-label="YouTube de Mercado Pecuario">
+          <!-- YouTube -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.5s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.9 3.8 12 3.8 12 3.8h0s-5.9 0-8.1.3c-.4.1-1.3.1-2.1 1C1.2 5.8 1 7.5 1 7.5S.8 9.5.8 11.6v.8C.8 14.5 1 16.5 1 16.5s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 7.8.3 7.8.3s5.9 0 8.1-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-2 .2-3.1v-.8c0-2.1-.2-4.1-.2-4.1ZM9.8 14.9V8.7l6 3.1-6 3.1Z"/></svg>
           <span>YouTube</span>
         </a>
       </div>
+      <!-- /Social Bar -->
     </div>
   </section>
 
   <!-- SOBRE NOSOTROS -->
   <section class="section" id="sobre">
     <h2>Sobre Nosotros</h2>
-    <p><strong>Mercado Pecuario Nicaragua</strong> es una plataforma gratuita diseñada para transformar la manera en que los productores compran y venden animales...</p>
+    <p>
+      <strong>Mercado Pecuario Nicaragua</strong> es una plataforma gratuita diseñada para transformar la manera en que los productores compran y venden animales en el país.
+      Nació con el propósito de <strong>empoderar al sector agropecuario</strong>, brindando una herramienta moderna, segura y accesible desde cualquier dispositivo móvil.
+    </p>
+    <p>
+      A través de nuestra aplicación, ganaderos y productores pueden <strong>publicar y encontrar animales en tiempo real</strong>, sin intermediarios y con la posibilidad de negociar directamente.
+      Esto permite <strong>ahorrar tiempo y reducir costos</strong>, fomentando la transparencia y la confianza, y sobre todo
+      <strong>potenciar el aprovechamiento del hato ganadero en manos de los productores</strong>.
+    </p>
+    <p>
+      Nuestra misión es impulsar la <strong>transformación digital del sector agropecuario en Nicaragua</strong>, conectando a productores de todas las regiones y facilitando el acceso a un mercado más amplio.
+      Creemos en el <strong>comercio justo</strong>, en el valor del esfuerzo de cada productor y en la tecnología como herramienta para mejorar la vida de las comunidades rurales.
+    </p>
+    <p>
+      Con <strong>Mercado Pecuario</strong>, construimos una comunidad donde la <strong>tradición agropecuaria</strong> se combina con la <strong>innovación tecnológica</strong>,
+      abriendo nuevas oportunidades para el crecimiento económico y social del campo nicaragüense.
+    </p>
   </section>
 
   <!-- GALERÍA -->
-  <section class="section gallery" id="galeria">
-    <h2>Galería</h2>
+  <section class="section gallery" aria-labelledby="galeria-title">
+    <h2 id="galeria-title">Galería</h2>
     <div class="image-grid">
-      <img src="poster1.jpg" alt="Póster 1 de Mercado Pecuario" width="800" height="600" loading="lazy" />
-      <img src="poster2.jpg" alt="Póster 2 de Mercado Pecuario" width="800" height="600" loading="lazy" />
+      <img src="poster1.jpg" alt="Póster de promoción 1 de Mercado Pecuario"
+           width="800" height="600" loading="lazy" decoding="async" />
+      <img src="poster2.jpg" alt="Póster de promoción 2 de Mercado Pecuario"
+           width="800" height="600" loading="lazy" decoding="async" />
     </div>
   </section>
 
   <!-- TÉRMINOS -->
   <section class="section" id="terminos">
     <h2>Términos de Uso</h2>
-    <p>Al utilizar <strong>Mercado Pecuario</strong>, aceptas estos términos...</p>
+    <p>
+      Al utilizar <strong>Mercado Pecuario</strong>, aceptas estos términos y te comprometes a mantener
+      <strong>respeto y responsabilidad</strong> en tus publicaciones. Eres <strong>responsable de la veracidad y legalidad</strong>
+      de toda la información que compartas.
+    </p>
+    <p>
+      No se permite contenido <strong>falso</strong>, <strong>engañoso</strong> o <strong>ilegal</strong>, ni aquel que
+      <strong>vulnere derechos de terceros</strong> (derechos de autor, marcas, privacidad o imagen) o que promueva
+      <strong>fraude</strong> o <strong>violencia</strong>.
+    </p>
+    <p>
+      Las <strong>transacciones o acuerdos fuera de la plataforma</strong> son responsabilidad exclusiva de las partes;
+      <strong>Mercado Pecuario</strong> no se hace responsable por dichos acuerdos ni por pérdidas derivadas de ellos.
+    </p>
+    <p>
+      Nos reservamos el derecho de <strong>moderar, editar, ocultar o eliminar</strong> contenido que infrinja estos términos,
+      así como <strong>suspender o bloquear cuentas</strong> reincidentes.
+    </p>
+    <p>
+      Puedes <strong>reportar</strong> publicaciones o usuarios mediante los canales disponibles.
+    </p>
+    <p>
+      Podemos <strong>actualizar</strong> estos Términos en cualquier momento; el uso continuo de la plataforma implica la
+      aceptación de las versiones vigentes.
+    </p>
   </section>
 
-  <!-- POLÍTICA -->
+  <!-- POLÍTICA DE INFORMACIÓN -->
   <section class="section" id="politica">
     <h2>Política de Privacidad</h2>
-    <p>En <strong>Mercado Pecuario</strong> protegemos la privacidad...</p>
+    <p>
+      En <strong>Mercado Pecuario</strong>, la privacidad y protección de datos es prioritaria. La aplicación no recopila ni comparte
+      información personal sensible sin consentimiento expreso.
+    </p>
+    <p>
+      Los datos voluntarios (nombre, teléfono, ubicación o fotos) se usan exclusivamente para operar la app:
+      mostrar anuncios y facilitar el contacto entre compradores y vendedores.
+    </p>
+    <p>
+      No compartimos datos personales con terceros para fines comerciales. No rastreamos actividad fuera de la plataforma
+      ni usamos analítica de terceros sin consentimiento previo.
+    </p>
+    <p>
+      La información publicada (anuncios, fotos, descripciones) es visible públicamente y cada usuario es responsable del contenido.
+    </p>
+    <p>
+      Puedes solicitar la eliminación de tus datos escribiendo a
+      <a href="mailto:info@mercadopecuario.com">info@mercadopecuario.com</a>.
+    </p>
+    <p>
+      Esta política puede actualizarse por cambios legales o de transparencia.
+    </p>
   </section>
 
   <!-- CONTACTO -->
   <section class="section" id="contacto">
     <h2>Contacto para Usuarios</h2>
-    <p>Si tienes dudas, escríbenos a <a href="mailto:info@mercadopecuario.com">info@mercadopecuario.com</a></p>
+    <p>Si tienes dudas sobre cómo publicar, buscar animales o necesitas ayuda con tus anuncios, puedes escribirnos.
+       Si tienes tu <strong>Anuncio ID</strong>, inclúyelo para atención más rápida.</p>
+    <p>Puedes contactarnos al correo:
+      <a href="mailto:info@mercadopecuario.com">info@mercadopecuario.com</a>
+    </p>
   </section>
 
   <!-- ANÚNCIATE -->
   <section class="section" id="anunciar">
     <h2>¿Quieres anunciar tu negocio con nosotros?</h2>
-    <p>Al anunciarte en <strong>Mercado Pecuario</strong>, llegas a miles de productores y compradores en todo el país.</p>
+    <p>
+      Los anuncios que no correspondan a la compra/venta de animales —insumos, transporte, maquinaria u otros servicios pecuarios—
+      tienen un <strong>costo de publicación</strong>.
+    </p>
+    <p>
+      Al anunciarte en <strong>Mercado Pecuario</strong>, promueves tus productos ante miles de productores y compradores en todo el país,
+      llegando directo a tu público objetivo.
+    </p>
+    <p>Escríbenos a:
+      <a href="mailto:info@mercadopecuario.com">info@mercadopecuario.com</a>
+    </p>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer neomorph">
+  <footer class="footer neomorph" role="contentinfo">
     <p>&copy; 2025 Mercado Pecuario. Todos los derechos reservados.</p>
   </footer>
 </body>
