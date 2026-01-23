@@ -1,3 +1,10 @@
+/* ad.css (CORREGIDO — copiar y pegar)
+   Objetivo:
+   - Mantener tu estética neomorfista
+   - Evitar que “no se vea nada” por colapsos de grid/altura/visibilidad
+   - Hacer el KV consistente (labels + valores) sin esconder contenido
+*/
+
 /* Mantener el mismo feeling del hero, pero más compacto */
 .hero-compact { padding: 2.5rem 1rem; }
 
@@ -10,26 +17,35 @@
 }
 
 /* Botón secundario sin romper tu estética */
-.btn.btn-secondary {
-  background-color: #295b5c;
-}
-.btn.btn-secondary:hover {
-  background-color: #204748;
-}
+.btn.btn-secondary { background-color: #295b5c; }
+.btn.btn-secondary:hover { background-color: #204748; }
 
 /* Card detalle */
-.ad-card { padding: 1.25rem; }
+.ad-card {
+  padding: 1.25rem;
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
 
+/* Grid: OJO con el orden (en tu HTML: media primero, info después)
+   Por eso el template debe favorecer media a la izquierda, info a la derecha */
 .ad-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.25rem;
+  align-items: start;
 }
 
+/* Desktop */
 @media (min-width: 900px) {
-  .ad-grid { grid-template-columns: 1.1fr .9fr; align-items: start; }
+  .ad-grid {
+    grid-template-columns: 1.15fr .85fr;
+    align-items: start;
+  }
 }
 
+/* Media */
 .ad-media {
   border-radius: 16px;
   padding: .75rem;
@@ -40,29 +56,44 @@
   overflow: hidden;
 }
 
+/* IMPORTANTÍSIMO:
+   Si por alguna razón el contenedor no tiene ancho/alto calculado bien,
+   esto evita “desaparecer” visualmente */
 .ad-media img {
   width: 100%;
+  max-width: 100%;
   height: auto;
   border-radius: 14px;
   display: block;
   box-shadow: 6px 6px 12px #ccc;
 }
 
+/* Placeholder */
 .ad-media-placeholder {
   color: #295b5c;
   font-weight: 700;
   opacity: .8;
+  text-align: center;
 }
 
-.ad-h2 { color: #295b5c; font-size: 1.2rem; margin-bottom: .75rem; }
+/* Info */
+.ad-h2 {
+  color: #295b5c;
+  font-size: 1.2rem;
+  margin-bottom: .75rem;
+}
 
+/* KV: aquí estaba una causa típica de “no se ve nada útil”:
+   Tener 2 columnas de tarjetas pero dentro cada tarjeta solo texto, sin layout de label/valor.
+   Lo dejamos como tarjetas, pero garantizando legibilidad y wrap. */
 .ad-kv {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: .75rem;
 }
 
-@media (max-width: 520px) {
+/* Si la pantalla es estrecha, 1 columna */
+@media (max-width: 700px) {
   .ad-kv { grid-template-columns: 1fr; }
 }
 
@@ -71,6 +102,10 @@
   box-shadow: inset 6px 6px 12px #d1d9e6, inset -6px -6px 12px #ffffff;
   border-radius: 14px;
   padding: .75rem .9rem;
+  min-height: 64px;                 /* evita que parezcan “vacías” */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .kv-item b {
@@ -79,16 +114,27 @@
   opacity: .75;
   margin-bottom: .2rem;
   color: #295b5c;
+  letter-spacing: .2px;
 }
 
-.kv-item span { font-weight: 700; color: #2f3e36; }
+.kv-item span {
+  font-weight: 700;
+  color: #2f3e36;
+  word-break: break-word;          /* evita que se “salga” y rompa layout */
+}
 
-.ad-desc { margin-top: .25rem; }
+/* Descripción */
+.ad-desc {
+  margin-top: .25rem;
+  white-space: pre-wrap;           /* respeta saltos de línea */
+  word-break: break-word;
+}
 
 .muted { opacity: .75; }
 
 .ad-foot { margin-top: 1rem; }
 
+/* Error */
 .ad-error {
   margin-top: 1rem;
   background: #ffffff;
@@ -98,4 +144,6 @@
   border-left: 6px solid #d94343;
   color: #5a1e1e;
   font-weight: 700;
+  white-space: pre-wrap;           /* para mostrar debug largo sin cortar */
+  word-break: break-word;
 }

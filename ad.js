@@ -1,29 +1,22 @@
 // ad.js (COPIAR Y PEGAR)
-// ====== NOTA IMPORTANTE ======
-// Si en producción "no se ven los detalles", casi seguro es que:
-// 1) GitHub Pages está sirviendo un JS viejo (cache). -> ya lo forzamos con ?v=999 en ad.html
-// 2) El JS está reventando por un error (y por eso solo se ve arriba).
-// Este ad.js incluye un "debug overlay" visible en pantalla para saber EXACTAMENTE qué pasa.
 
 // ========= CONFIG =========
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIddCr3ovzxG4pcLhvzITS3vODCmDuXx1B2a50gDyJGEAwiEWtM3matwQNWkR9ta0n/exec";
+const APPS_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbyIddCr3ovzxG4pcLhvzITS3vODCmDuXx1B2a50gDyJGEAwiEWtM3matwQNWkR9ta0n/exec";
 
 // ========= HELPERS =========
 function qs(name) {
   return new URL(window.location.href).searchParams.get(name);
 }
-
 function el(id) {
   return document.getElementById(id);
 }
-
 function setText(id, value) {
   const node = el(id);
   if (!node) return false;
   node.textContent = value;
   return true;
 }
-
 function setHtml(id, value) {
   const node = el(id);
   if (!node) return false;
@@ -60,26 +53,12 @@ function setCanonical(url) {
   if (link) link.setAttribute("href", url);
 }
 
-// ===== Debug overlay (visible) =====
-function ensureDebugBox() {
-  let box = document.getElementById("__mp_debug");
-  if (box) return box;
-
-  box = document.createElement("div");
-  box.id = "__mp_debug";
-  box.style.cssText =
-    "position:fixed;left:12px;bottom:12px;z-index:99999;max-width:92vw;" +
-    "background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px 12px;" +
-    "font-family:monospace;font-size:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);" +
-    "white-space:pre-wrap;word-break:break-word;opacity:.92";
-  box.textContent = "debug: cargando...";
-  document.body.appendChild(box);
-  return box;
-}
-
-function debug(msg) {
-  const box = ensureDebugBox();
-  box.textContent = String(msg);
+function kv(label, value) {
+  if (value === undefined || value === null || String(value).trim() === "") return null;
+  const d = document.createElement("div");
+  d.className = "kv-item";
+  d.innerHTML = `<b>${label}</b><span>${value}</span>`;
+  return d;
 }
 
 // Carga JSONP (evita CORS)
@@ -114,15 +93,6 @@ function loadJsonp(url, cbName) {
   });
 }
 
-// ========= RENDER =========
-function kv(label, value) {
-  if (value === undefined || value === null || String(value).trim() === "") return null;
-  const d = document.createElement("div");
-  d.className = "kv-item";
-  d.innerHTML = `<b>${label}</b><span>${value}</span>`;
-  return d;
-}
-
 function showError(msg) {
   setText("adTitle", "No se pudo cargar el anuncio");
   setText("adSubtitle", "Verificá el link o el ID del anuncio.");
@@ -137,20 +107,80 @@ function showError(msg) {
 
   const btn = el("btnWhatsapp");
   if (btn) btn.style.display = "none";
+}
 
-  debug("ERROR:\n" + msg);
+// ========= RENDER =========
+function forceDetailsVisible() {
+  // Si algún CSS colapsó cosas, lo corregimos por JS (para confirmar que el problema era CSS)
+  const section = document.querySelector("section.section");
+  if (section) {
+    section.style.display = "block";
+    section.style.visibility = "visible";
+    section.style.opacity = "1";
+  }
+
+  const card = document.querySelector(".ad-card");
+  if (card) {
+    card.style.display = "block";
+    card.style.visibility = "visible";
+    card.style.opacity = "1";
+  }
+
+  const grid = document.querySelector(".ad-grid");
+  if (grid) {
+    grid.style.display = "grid";
+  }
+
+  // Mostrar el bloque de info aunque haya CSS raro
+  const info = document.querySelector(".ad-info");
+  if (info) {
+    info.style.display = "block";
+  }
+}
+
+function diagnoseVisibility(payload, ad) {
+  // Si algo está oculto, lo reportamos en adError para que lo veas sin consola
+  const ids = ["adKv", "adDesc", "adMedia", "adTitle", "adSubtitle", "adError"];
+  const report = [];
+
+  ids.forEach((id) => {
+    const node = el(id);
+    if (!node) {
+      report.push(`${id}: MISSING`);
+      return;
+    }
+    const cs = window.getComputedStyle(node);
+    report.push(`${id}: display=${cs.display}, visibility=${cs.visibility}, opacity=${cs.opacity}`);
+  });
+
+  const kvWrap = el("adKv");
+  const kvText = kvWrap ? kvWrap.innerText.trim() : "";
+  const desc = el("adDesc") ? el("adDesc").innerText.trim() : "";
+
+  report.push("");
+  report.push("DATA CHECK:");
+  report.push(`ad.id=${ad.id}`);
+  report.push(`kvLen=${kvText.length}`);
+  report.push(`descLen=${desc.length}`);
+  report.push(`fotosLen=${String(ad.fotos || "").length}`);
+
+  const box = el("adError");
+  if (box) {
+    box.style.display = "block";
+    box.textContent =
+      "DEBUG (si ves esto, es problema de CSS/visibilidad):\n" +
+      report.join("\n");
+  }
 }
 
 function renderAdFromPayload(payload) {
   const ad = payload?.adClean || payload?.ad || {};
   const waLink = payload?.waLink || "";
 
-  debug(
-    "Render OK\n" +
-    "keys(payload): " + Object.keys(payload || {}).join(", ") + "\n" +
-    "keys(ad): " + Object.keys(ad || {}).join(", ")
-  );
+  // 1) Forzar visibilidad (si esto “arregla”, era 100% CSS)
+  forceDetailsVisible();
 
+  // 2) Título/subtítulo
   const tipo = (ad.tipo || "").toString();
   const tipoAnimal = (ad.tipoAnimal || "").toString();
 
@@ -160,7 +190,7 @@ function renderAdFromPayload(payload) {
   setText("adTitle", title);
   setText("adSubtitle", subtitle);
 
-  // Media (primera foto)
+  // 3) Media (primera foto)
   const fotosStr = (ad.fotos || "").toString();
   const first = fotosStr.split(",").map(s => s.trim()).filter(Boolean)[0];
   const imgUrl = driveToDirect(first);
@@ -186,7 +216,7 @@ function renderAdFromPayload(payload) {
     }
   }
 
-  // KV
+  // 4) KV (Detalles)
   const kvWrap = el("adKv");
   if (kvWrap) {
     kvWrap.innerHTML = "";
@@ -204,19 +234,12 @@ function renderAdFromPayload(payload) {
       const node = kv(k, v);
       if (node) kvWrap.appendChild(node);
     });
-  } else {
-    debug("ERROR: No existe el div #adKv en el HTML");
   }
 
-  // Descripción
+  // 5) Descripción
   setText("adDesc", ad.descripcion || "—");
 
-  // ✅ TIMESTAMP REMOVIDO COMPLETAMENTE (no tocamos adUpdated)
-  // Si querés limpiar por si quedó algo, podés:
-  const upd = el("adUpdated");
-  if (upd) upd.textContent = "";
-
-  // WhatsApp
+  // 6) WhatsApp
   const btn = el("btnWhatsapp");
   if (btn) {
     if (waLink) {
@@ -229,7 +252,7 @@ function renderAdFromPayload(payload) {
     }
   }
 
-  // Meta dinámico
+  // 7) Meta dinámico
   document.title = `Mercado Pecuario | ${title}`;
   setMeta("description", `${title}. ${subtitle}`.slice(0, 150), false);
 
@@ -241,6 +264,9 @@ function renderAdFromPayload(payload) {
   const canonical = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(ad.id || "")}`;
   setCanonical(canonical);
   setMeta("og:url", canonical, true);
+
+  // 8) Si después de render sigue “vacío”, te muestro diagnóstico visible
+  diagnoseVisibility(payload, ad);
 }
 
 // ========= LOAD =========
@@ -251,16 +277,10 @@ async function loadAd() {
     return;
   }
 
-  debug("Cargando anuncio...\nID=" + id);
-
   // 1) Intento JSON normal
   try {
     const url = `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}`;
-    debug("Fetch JSON...\n" + url);
-
     const res = await fetch(url, { method: "GET" });
-    debug("Fetch status: " + res.status);
-
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const data = await res.json();
@@ -268,21 +288,15 @@ async function loadAd() {
 
     renderAdFromPayload(data);
     return;
-  } catch (e) {
-    debug("JSON falló, probando JSONP...\n" + String(e?.message || e));
-  }
+  } catch (_) {}
 
   // 2) Fallback JSONP
   try {
     const cbName = "__mpRenderAd_" + Math.random().toString(36).slice(2);
-    const url =
-      `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}&callback=${encodeURIComponent(cbName)}`;
-
-    debug("JSONP...\n" + url);
-
+    const url = `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}&callback=${encodeURIComponent(cbName)}`;
     const data = await loadJsonp(url, cbName);
-    if (!data || data.ok === false) throw new Error(data?.error || "Anuncio no encontrado");
 
+    if (!data || data.ok === false) throw new Error(data?.error || "Anuncio no encontrado");
     renderAdFromPayload(data);
   } catch (err) {
     showError(`Error: ${String(err && err.message ? err.message : err)}`);
