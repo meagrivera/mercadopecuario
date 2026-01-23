@@ -1,4 +1,9 @@
-// ad.js
+// ad.js (COPIAR Y PEGAR)
+// ====== NOTA IMPORTANTE ======
+// Si en producción "no se ven los detalles", casi seguro es que:
+// 1) GitHub Pages está sirviendo un JS viejo (cache). -> ya lo forzamos con ?v=999 en ad.html
+// 2) El JS está reventando por un error (y por eso solo se ve arriba).
+// Este ad.js incluye un "debug overlay" visible en pantalla para saber EXACTAMENTE qué pasa.
 
 // ========= CONFIG =========
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIddCr3ovzxG4pcLhvzITS3vODCmDuXx1B2a50gDyJGEAwiEWtM3matwQNWkR9ta0n/exec";
@@ -28,23 +33,17 @@ function setHtml(id, value) {
 
 function driveToDirect(urlOrId) {
   if (!urlOrId) return "";
-
   const s = String(urlOrId).trim();
 
-  // Si solo es ID:
   const looksLikeId = /^[a-zA-Z0-9_-]{20,}$/.test(s) && !s.includes("http");
-
-  // Extraer ID de cualquier URL típica de Drive:
   const m =
-    s.match(/\/d\/([a-zA-Z0-9_-]{20,})\//) ||     // /file/d/<id>/
-    s.match(/[?&]id=([a-zA-Z0-9_-]{20,})/) ||     // ?id=<id>
-    s.match(/\/uc\?export=view&id=([a-zA-Z0-9_-]{20,})/); // uc?export=view&id=<id>
+    s.match(/\/d\/([a-zA-Z0-9_-]{20,})\//) ||
+    s.match(/[?&]id=([a-zA-Z0-9_-]{20,})/) ||
+    s.match(/\/uc\?export=view&id=([a-zA-Z0-9_-]{20,})/);
 
   const id = looksLikeId ? s : (m && m[1] ? m[1] : "");
-
   if (!id) return s;
 
-  // ✅ Thumbnail grande (mejor para <img>)
   return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
 }
 
@@ -61,7 +60,29 @@ function setCanonical(url) {
   if (link) link.setAttribute("href", url);
 }
 
-// Carga JSONP (evita CORS) y llama callback global
+// ===== Debug overlay (visible) =====
+function ensureDebugBox() {
+  let box = document.getElementById("__mp_debug");
+  if (box) return box;
+
+  box = document.createElement("div");
+  box.id = "__mp_debug";
+  box.style.cssText =
+    "position:fixed;left:12px;bottom:12px;z-index:99999;max-width:92vw;" +
+    "background:#fff;border:1px solid #ddd;border-radius:10px;padding:10px 12px;" +
+    "font-family:monospace;font-size:12px;box-shadow:0 8px 20px rgba(0,0,0,.15);" +
+    "white-space:pre-wrap;word-break:break-word;opacity:.92";
+  box.textContent = "debug: cargando...";
+  document.body.appendChild(box);
+  return box;
+}
+
+function debug(msg) {
+  const box = ensureDebugBox();
+  box.textContent = String(msg);
+}
+
+// Carga JSONP (evita CORS)
 function loadJsonp(url, cbName) {
   return new Promise((resolve, reject) => {
     const script = document.createElement("script");
@@ -76,11 +97,7 @@ function loadJsonp(url, cbName) {
     function cleanup() {
       clearTimeout(timeout);
       script.remove();
-      try {
-        delete window[cbName];
-      } catch (_) {
-        window[cbName] = undefined;
-      }
+      try { delete window[cbName]; } catch (_) { window[cbName] = undefined; }
     }
 
     window[cbName] = (data) => {
@@ -110,6 +127,7 @@ function showError(msg) {
   setText("adTitle", "No se pudo cargar el anuncio");
   setText("adSubtitle", "Verificá el link o el ID del anuncio.");
   setHtml("adMedia", `<div class="ad-media-placeholder">Sin datos para mostrar</div>`);
+  setText("privacyHint", "");
 
   const box = el("adError");
   if (box) {
@@ -119,24 +137,25 @@ function showError(msg) {
 
   const btn = el("btnWhatsapp");
   if (btn) btn.style.display = "none";
-  setText("privacyHint", "");
+
+  debug("ERROR:\n" + msg);
 }
 
 function renderAdFromPayload(payload) {
-  // Payload esperado del Apps Script:
-  // { ok:true, ad:{...}, adClean:{...}, waLink:"...", shareUrl:"..." }
   const ad = payload?.adClean || payload?.ad || {};
   const waLink = payload?.waLink || "";
+
+  debug(
+    "Render OK\n" +
+    "keys(payload): " + Object.keys(payload || {}).join(", ") + "\n" +
+    "keys(ad): " + Object.keys(ad || {}).join(", ")
+  );
 
   const tipo = (ad.tipo || "").toString();
   const tipoAnimal = (ad.tipoAnimal || "").toString();
 
-  const title =
-    [tipoAnimal, tipo].filter(Boolean).join(" • ") || `Anuncio ${ad.id || ""}`;
-
-  const subtitle =
-    [ad.ubicacion, ad.raza].filter(Boolean).join(" • ") ||
-    "Mercado Pecuario • ficha pública";
+  const title = [tipoAnimal, tipo].filter(Boolean).join(" • ") || `Anuncio ${ad.id || ""}`;
+  const subtitle = [ad.ubicacion, ad.raza].filter(Boolean).join(" • ") || "Mercado Pecuario • ficha pública";
 
   setText("adTitle", title);
   setText("adSubtitle", subtitle);
@@ -185,21 +204,19 @@ function renderAdFromPayload(payload) {
       const node = kv(k, v);
       if (node) kvWrap.appendChild(node);
     });
+  } else {
+    debug("ERROR: No existe el div #adKv en el HTML");
   }
 
   // Descripción
   setText("adDesc", ad.descripcion || "—");
 
-  // Updated (✅ FIX: bloque correcto)
-  if (ad.timestamp) {
-    const dt = new Date(ad.timestamp);
-    const text = isNaN(dt.getTime()) ? "" : `Actualizado: ${dt.toLocaleString()}`;
-    setText("adUpdated", text);
-  } else {
-    setText("adUpdated", "");
-  }
+  // ✅ TIMESTAMP REMOVIDO COMPLETAMENTE (no tocamos adUpdated)
+  // Si querés limpiar por si quedó algo, podés:
+  const upd = el("adUpdated");
+  if (upd) upd.textContent = "";
 
-  // WhatsApp (usa waLink del backend si existe)
+  // WhatsApp
   const btn = el("btnWhatsapp");
   if (btn) {
     if (waLink) {
@@ -221,7 +238,6 @@ function renderAdFromPayload(payload) {
   setMeta("twitter:title", `Mercado Pecuario | ${title}`, false);
   setMeta("twitter:description", subtitle, false);
 
-  // canonical con id
   const canonical = `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(ad.id || "")}`;
   setCanonical(canonical);
   setMeta("og:url", canonical, true);
@@ -235,10 +251,16 @@ async function loadAd() {
     return;
   }
 
+  debug("Cargando anuncio...\nID=" + id);
+
   // 1) Intento JSON normal
   try {
     const url = `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}`;
+    debug("Fetch JSON...\n" + url);
+
     const res = await fetch(url, { method: "GET" });
+    debug("Fetch status: " + res.status);
+
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
 
     const data = await res.json();
@@ -246,17 +268,21 @@ async function loadAd() {
 
     renderAdFromPayload(data);
     return;
-  } catch (_) {
-    // 2) Fallback JSONP
+  } catch (e) {
+    debug("JSON falló, probando JSONP...\n" + String(e?.message || e));
   }
 
+  // 2) Fallback JSONP
   try {
     const cbName = "__mpRenderAd_" + Math.random().toString(36).slice(2);
     const url =
       `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}&callback=${encodeURIComponent(cbName)}`;
-    const data = await loadJsonp(url, cbName);
 
+    debug("JSONP...\n" + url);
+
+    const data = await loadJsonp(url, cbName);
     if (!data || data.ok === false) throw new Error(data?.error || "Anuncio no encontrado");
+
     renderAdFromPayload(data);
   } catch (err) {
     showError(`Error: ${String(err && err.message ? err.message : err)}`);
