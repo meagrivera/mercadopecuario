@@ -1,10 +1,29 @@
+// ad.js
+
 // ========= CONFIG =========
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIddCr3ovzxG4pcLhvzITS3vODCmDuXx1B2a50gDyJGEAwiEWtM3matwQNWkR9ta0n/exec";
-const COUNTRY_CODE = "505"; // Nicaragua
 
 // ========= HELPERS =========
 function qs(name) {
   return new URL(window.location.href).searchParams.get(name);
+}
+
+function el(id) {
+  return document.getElementById(id);
+}
+
+function setText(id, value) {
+  const node = el(id);
+  if (!node) return false;
+  node.textContent = value;
+  return true;
+}
+
+function setHtml(id, value) {
+  const node = el(id);
+  if (!node) return false;
+  node.innerHTML = value;
+  return true;
 }
 
 function driveToDirect(urlOrId) {
@@ -23,11 +42,9 @@ function driveToDirect(urlOrId) {
 
   const id = looksLikeId ? s : (m && m[1] ? m[1] : "");
 
-  // Si no pudimos extraer ID, devolvemos lo que venga
   if (!id) return s;
 
-  // ✅ Mejor para <img>: thumbnail grande (Drive lo sirve bien)
-  // Nota: si querés más grande, subí sz=w2000 o w3000
+  // ✅ Thumbnail grande (mejor para <img>)
   return `https://drive.google.com/thumbnail?id=${id}&sz=w2000`;
 }
 
@@ -35,8 +52,8 @@ function setMeta(nameOrProp, value, isProp = false) {
   const sel = isProp
     ? `meta[property="${nameOrProp}"]`
     : `meta[name="${nameOrProp}"]`;
-  const el = document.querySelector(sel);
-  if (el) el.setAttribute("content", value);
+  const meta = document.querySelector(sel);
+  if (meta) meta.setAttribute("content", value);
 }
 
 function setCanonical(url) {
@@ -90,18 +107,19 @@ function kv(label, value) {
 }
 
 function showError(msg) {
-  const box = document.getElementById("adError");
-  box.style.display = "block";
-  box.textContent = msg;
+  setText("adTitle", "No se pudo cargar el anuncio");
+  setText("adSubtitle", "Verificá el link o el ID del anuncio.");
+  setHtml("adMedia", `<div class="ad-media-placeholder">Sin datos para mostrar</div>`);
 
-  document.getElementById("adTitle").textContent = "No se pudo cargar el anuncio";
-  document.getElementById("adSubtitle").textContent = "Verificá el link o el ID del anuncio.";
-  document.getElementById("adMedia").innerHTML =
-    `<div class="ad-media-placeholder">Sin datos para mostrar</div>`;
+  const box = el("adError");
+  if (box) {
+    box.style.display = "block";
+    box.textContent = msg;
+  }
 
-  // ocultar botón WA si existe
-  const btn = document.getElementById("btnWhatsapp");
+  const btn = el("btnWhatsapp");
   if (btn) btn.style.display = "none";
+  setText("privacyHint", "");
 }
 
 function renderAdFromPayload(payload) {
@@ -110,78 +128,87 @@ function renderAdFromPayload(payload) {
   const ad = payload?.adClean || payload?.ad || {};
   const waLink = payload?.waLink || "";
 
-  // Título/subtítulo
   const tipo = (ad.tipo || "").toString();
   const tipoAnimal = (ad.tipoAnimal || "").toString();
 
-  const title = [tipoAnimal, tipo].filter(Boolean).join(" • ") || `Anuncio ${ad.id || ""}`;
-  const subtitle = [ad.ubicacion, ad.raza].filter(Boolean).join(" • ") || "Mercado Pecuario • ficha pública";
+  const title =
+    [tipoAnimal, tipo].filter(Boolean).join(" • ") || `Anuncio ${ad.id || ""}`;
 
-  document.getElementById("adTitle").textContent = title;
-  document.getElementById("adSubtitle").textContent = subtitle;
+  const subtitle =
+    [ad.ubicacion, ad.raza].filter(Boolean).join(" • ") ||
+    "Mercado Pecuario • ficha pública";
+
+  setText("adTitle", title);
+  setText("adSubtitle", subtitle);
 
   // Media (primera foto)
   const fotosStr = (ad.fotos || "").toString();
   const first = fotosStr.split(",").map(s => s.trim()).filter(Boolean)[0];
   const imgUrl = driveToDirect(first);
 
-  const media = document.getElementById("adMedia");
-  media.innerHTML = "";
-  if (imgUrl) {
-    const img = document.createElement("img");
-    img.src = imgUrl;
-    img.alt = `Foto del anuncio ${ad.id || ""}`;
-    img.loading = "eager";
-    img.decoding = "async";
-    media.appendChild(img);
+  const media = el("adMedia");
+  if (media) {
+    media.innerHTML = "";
+    if (imgUrl) {
+      const img = document.createElement("img");
+      img.src = imgUrl;
+      img.alt = `Foto del anuncio ${ad.id || ""}`;
+      img.loading = "eager";
+      img.decoding = "async";
+      img.onerror = () => {
+        media.innerHTML = `<div class="ad-media-placeholder">No se pudo cargar la foto</div>`;
+      };
+      media.appendChild(img);
 
-    // OG image dinámico (nota: WhatsApp cachea OG desde server, pero igual ayuda)
-    setMeta("og:image", imgUrl, true);
-    setMeta("twitter:image", imgUrl, false);
-  } else {
-    media.innerHTML = `<div class="ad-media-placeholder">Sin foto disponible</div>`;
+      setMeta("og:image", imgUrl, true);
+      setMeta("twitter:image", imgUrl, false);
+    } else {
+      media.innerHTML = `<div class="ad-media-placeholder">Sin foto disponible</div>`;
+    }
   }
 
   // KV
-  const kvWrap = document.getElementById("adKv");
-  kvWrap.innerHTML = "";
-  const pairs = [
-    ["ID", ad.id],
-    ["Sexo", ad.sexo],
-    ["Edad", ad.edad],
-    ["Peso (kg)", ad.pesoKg],
-    ["Precio (C$)", ad.precioC],
-    ["Raza", ad.raza],
-    ["Ubicación", ad.ubicacion],
-  ];
+  const kvWrap = el("adKv");
+  if (kvWrap) {
+    kvWrap.innerHTML = "";
+    const pairs = [
+      ["ID", ad.id],
+      ["Sexo", ad.sexo],
+      ["Edad", ad.edad],
+      ["Peso (kg)", ad.pesoKg],
+      ["Precio (C$)", ad.precioC],
+      ["Raza", ad.raza],
+      ["Ubicación", ad.ubicacion],
+    ];
 
-  pairs.forEach(([k, v]) => {
-    const node = kv(k, v);
-    if (node) kvWrap.appendChild(node);
-  });
+    pairs.forEach(([k, v]) => {
+      const node = kv(k, v);
+      if (node) kvWrap.appendChild(node);
+    });
+  }
 
   // Descripción
-  document.getElementById("adDesc").textContent = ad.descripcion || "—";
+  setText("adDesc", ad.descripcion || "—");
 
-  // Updated
- if (ad.timestamp) {
- //   const dt = new Date(ad.timestamp);
- //   document.getElementById("adUpdated").textContent = `Actualizado: ${dt.toLocaleString()}`;
- // } else {
-   document.getElementById("adUpdated").textContent = "";
+  // Updated (✅ FIX: bloque correcto)
+  if (ad.timestamp) {
+    const dt = new Date(ad.timestamp);
+    const text = isNaN(dt.getTime()) ? "" : `Actualizado: ${dt.toLocaleString()}`;
+    setText("adUpdated", text);
+  } else {
+    setText("adUpdated", "");
   }
 
   // WhatsApp (usa waLink del backend si existe)
-  const btn = document.getElementById("btnWhatsapp");
+  const btn = el("btnWhatsapp");
   if (btn) {
     if (waLink) {
       btn.href = waLink;
       btn.style.display = "inline-block";
-      document.getElementById("privacyHint").textContent =
-        "Privacidad: el número no se muestra. Contactá al anunciante por WhatsApp.";
+      setText("privacyHint", "Privacidad: el número no se muestra. Contactá al anunciante por WhatsApp.");
     } else {
       btn.style.display = "none";
-      document.getElementById("privacyHint").textContent = "";
+      setText("privacyHint", "");
     }
   }
 
@@ -208,7 +235,7 @@ async function loadAd() {
     return;
   }
 
-  // 1) Intento normal JSON (si CORS lo permite)
+  // 1) Intento JSON normal
   try {
     const url = `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}`;
     const res = await fetch(url, { method: "GET" });
@@ -220,16 +247,16 @@ async function loadAd() {
     renderAdFromPayload(data);
     return;
   } catch (_) {
-    // 2) Fallback JSONP (funciona local + GitHub Pages sin CORS)
+    // 2) Fallback JSONP
   }
 
   try {
     const cbName = "__mpRenderAd_" + Math.random().toString(36).slice(2);
-    const url = `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}&callback=${encodeURIComponent(cbName)}`;
+    const url =
+      `${APPS_SCRIPT_URL}?action=getAd&id=${encodeURIComponent(id)}&callback=${encodeURIComponent(cbName)}`;
     const data = await loadJsonp(url, cbName);
 
     if (!data || data.ok === false) throw new Error(data?.error || "Anuncio no encontrado");
-
     renderAdFromPayload(data);
   } catch (err) {
     showError(`Error: ${String(err && err.message ? err.message : err)}`);

@@ -1,3 +1,4 @@
+<!-- ad.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,12 +23,12 @@
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-  <!-- SEO Meta Tags (JS actualiza title/description para compartir) -->
+  <!-- SEO Meta Tags -->
   <meta name="description" content="Ficha pública de Mercado Pecuario." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#295b5c" />
 
-  <!-- Open Graph (JS los actualiza dinámicamente) -->
+  <!-- Open Graph -->
   <meta property="og:title" content="Mercado Pecuario | Anuncio" />
   <meta property="og:description" content="Ficha pública de un anuncio en Mercado Pecuario." />
   <meta property="og:type" content="website" />
@@ -42,7 +43,7 @@
   <meta name="twitter:description" content="Ficha pública de un anuncio en Mercado Pecuario." />
   <meta name="twitter:image" content="https://mercadopecuario.com/poster1.jpg" />
 
-  <!-- Fonts & CSS (reusa tu estilo) -->
+  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
@@ -50,8 +51,8 @@
   <link rel="stylesheet" href="ad.css" />
 
   <!-- Scripts -->
-  <script defer src="scripts.js"></script>
-  <script defer src="ad.js"></script>
+  <script defer src="scripts.js?v=1"></script>
+  <script defer src="ad.js?v=7"></script>
 </head>
 
 <body>
@@ -60,10 +61,9 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Skip to content -->
   <a class="skip-link" href="#detalle">Saltar al contenido</a>
 
-  <!-- NAVBAR (igual que index) -->
+  <!-- NAVBAR -->
   <header class="navbar neomorph" role="banner">
     <div class="logo">
       <img src="logo-mercado-pecuario.png" alt="Logo de Mercado Pecuario" class="logo-img" width="62" height="62" decoding="async" />
@@ -84,7 +84,7 @@
     <button class="menu-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Abrir menú">☰</button>
   </header>
 
-  <!-- HERO (mismo feeling, pero más compacto) -->
+  <!-- HERO -->
   <section class="hero hero-compact" id="detalle">
     <div class="hero-content neomorph-in">
       <h1 id="adTitle">Cargando anuncio…</h1>
@@ -101,16 +101,14 @@
     </div>
   </section>
 
-  <!-- DETALLE (neomorfismo, como tus secciones) -->
+  <!-- DETALLE -->
   <section class="section" aria-label="Detalle del anuncio">
     <div class="ad-card neomorph">
       <div class="ad-grid">
-        <!-- Media -->
         <div class="ad-media neomorph-in" id="adMedia">
           <div class="ad-media-placeholder">Cargando foto…</div>
         </div>
 
-        <!-- Info -->
         <div class="ad-info">
           <h2 class="ad-h2">Información</h2>
 
@@ -129,7 +127,6 @@
     </div>
   </section>
 
-  <!-- FOOTER (igual) -->
   <footer class="footer neomorph" role="contentinfo">
     <p>&copy; 2025 Mercado Pecuario. Todos los derechos reservados.</p>
   </footer>
