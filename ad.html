@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Google Tag Manager -->
+  <script>
+  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-NP2JBV4L');
+  </script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Mercado Pecuario | Anuncio</title>
+
+  <!-- Canonical (se ajusta por JS también) -->
+  <link rel="canonical" href="https://mercadopecuario.com/ad.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- SEO Meta Tags (JS actualiza title/description para compartir) -->
+  <meta name="description" content="Ficha pública de Mercado Pecuario." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#295b5c" />
+
+  <!-- Open Graph (JS los actualiza dinámicamente) -->
+  <meta property="og:title" content="Mercado Pecuario | Anuncio" />
+  <meta property="og:description" content="Ficha pública de un anuncio en Mercado Pecuario." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mercadopecuario.com/ad.html" />
+  <meta property="og:image" content="https://mercadopecuario.com/poster1.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Mercado Pecuario | Anuncio" />
+  <meta name="twitter:description" content="Ficha pública de un anuncio en Mercado Pecuario." />
+  <meta name="twitter:image" content="https://mercadopecuario.com/poster1.jpg" />
+
+  <!-- Fonts & CSS (reusa tu estilo) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="ad.css" />
+
+  <!-- Scripts -->
+  <script defer src="scripts.js"></script>
+  <script defer src="ad.js"></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2JBV4L"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <!-- Skip to content -->
+  <a class="skip-link" href="#detalle">Saltar al contenido</a>
+
+  <!-- NAVBAR (igual que index) -->
+  <header class="navbar neomorph" role="banner">
+    <div class="logo">
+      <img src="logo-mercado-pecuario.png" alt="Logo de Mercado Pecuario" class="logo-img" width="62" height="62" decoding="async" />
+      <span>Mercado Pecuario</span>
+    </div>
+
+    <nav id="nav-menu" aria-label="Principal">
+      <ul>
+        <li><a href="index.html#inicio">Inicio</a></li>
+        <li><a href="index.html#sobre">Sobre Nosotros</a></li>
+        <li><a href="index.html#terminos">Términos</a></li>
+        <li><a href="index.html#politica">Política</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+        <li><a href="index.html#anunciar">Anúnciate</a></li>
+      </ul>
+    </nav>
+
+    <button class="menu-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Abrir menú">☰</button>
+  </header>
+
+  <!-- HERO (mismo feeling, pero más compacto) -->
+  <section class="hero hero-compact" id="detalle">
+    <div class="hero-content neomorph-in">
+      <h1 id="adTitle">Cargando anuncio…</h1>
+      <p id="adSubtitle">Mercado Pecuario • ficha pública</p>
+
+      <div class="actions-row">
+        <a id="btnWhatsapp" class="btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Contactar por WhatsApp</a>
+        <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.mercadopecuario" target="_blank" rel="noopener noreferrer">
+          Abrir en Google Play
+        </a>
+      </div>
+
+      <p class="muted" id="privacyHint"></p>
+    </div>
+  </section>
+
+  <!-- DETALLE (neomorfismo, como tus secciones) -->
+  <section class="section" aria-label="Detalle del anuncio">
+    <div class="ad-card neomorph">
+      <div class="ad-grid">
+        <!-- Media -->
+        <div class="ad-media neomorph-in" id="adMedia">
+          <div class="ad-media-placeholder">Cargando foto…</div>
+        </div>
+
+        <!-- Info -->
+        <div class="ad-info">
+          <h2 class="ad-h2">Información</h2>
+
+          <div class="ad-kv" id="adKv"></div>
+
+          <h2 class="ad-h2" style="margin-top:1.25rem;">Descripción</h2>
+          <p id="adDesc" class="ad-desc">—</p>
+
+          <div class="ad-foot">
+            <span class="muted" id="adUpdated"></span>
+          </div>
+
+          <div class="ad-error" id="adError" style="display:none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER (igual) -->
+  <footer class="footer neomorph" role="contentinfo">
+    <p>&copy; 2025 Mercado Pecuario. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
