@@ -164,12 +164,12 @@ function renderAdFromPayload(payload) {
   document.getElementById("adDesc").textContent = ad.descripcion || "—";
 
   // Updated
- // if (ad.timestamp) {
+ if (ad.timestamp) {
  //   const dt = new Date(ad.timestamp);
  //   document.getElementById("adUpdated").textContent = `Actualizado: ${dt.toLocaleString()}`;
  // } else {
-  //  document.getElementById("adUpdated").textContent = "";
- // }
+   document.getElementById("adUpdated").textContent = "";
+  }
 
   // WhatsApp (usa waLink del backend si existe)
   const btn = document.getElementById("btnWhatsapp");
