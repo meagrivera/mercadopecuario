@@ -1,4 +1,4 @@
-<!-- ad.html (COPIAR Y PEGAR) -->
+<!-- ad.html (CORREGIDO — COPIAR Y PEGAR) -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,6 +17,7 @@
 
   <title>Mercado Pecuario | Anuncio</title>
 
+  <!-- Canonical (JS también lo ajusta con ?id=) -->
   <link rel="canonical" href="https://mercadopecuario.com/ad.html" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
@@ -29,6 +30,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mercadopecuario.com/ad.html" />
   <meta property="og:image" content="https://mercadopecuario.com/poster1.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mercado Pecuario | Anuncio" />
@@ -38,17 +41,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="ad.css" />
 
-  <!-- IMPORTANT: cache-bust para GitHub Pages -->
-  <script defer src="scripts.js?v=1"></script>
-  <script defer src="ad.js?v=999"></script>
+  <!-- IMPORTANT: cache-bust también en CSS -->
+  <link rel="stylesheet" href="styles.css?v=20260123_1" />
+  <link rel="stylesheet" href="ad.css?v=20260123_1" />
+
+  <!-- Scripts: cache-bust + orden correcto (scripts.js primero) -->
+  <script defer src="scripts.js?v=20260123_1"></script>
+  <script defer src="ad.js?v=20260123_1"></script>
 </head>
 
 <body>
+  <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP2JBV4L"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <a class="skip-link" href="#detalle">Saltar al contenido</a>
 
@@ -101,8 +108,6 @@
 
           <h2 class="ad-h2" style="margin-top:1.25rem;">Descripción</h2>
           <p id="adDesc" class="ad-desc">—</p>
-
-          <!-- TIMESTAMP REMOVIDO -->
 
           <div class="ad-error" id="adError" style="display:none;"></div>
         </div>
