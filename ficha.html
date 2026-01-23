@@ -1,6 +1,5 @@
-<!-- ad.html (CORREGIDO — COPIAR Y PEGAR) -->
+<!-- ficha.html (COPIAR Y PEGAR) -->
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
   <!-- Google Tag Manager -->
@@ -16,26 +15,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Mercado Pecuario | Anuncio</title>
+  <title>Mercado Pecuario | Ficha</title>
 
-  <!-- Canonical (JS también lo ajusta con ?id=) -->
-  <link rel="canonical" href="https://mercadopecuario.com/ad.html" />
+  <link rel="canonical" href="https://mercadopecuario.com/ficha.html" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
   <meta name="description" content="Ficha pública de Mercado Pecuario." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#295b5c" />
 
-  <meta property="og:title" content="Mercado Pecuario | Anuncio" />
+  <meta property="og:title" content="Mercado Pecuario | Ficha" />
   <meta property="og:description" content="Ficha pública de un anuncio en Mercado Pecuario." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://mercadopecuario.com/ad.html" />
+  <meta property="og:url" content="https://mercadopecuario.com/ficha.html" />
   <meta property="og:image" content="https://mercadopecuario.com/poster1.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mercado Pecuario | Anuncio" />
+  <meta name="twitter:title" content="Mercado Pecuario | Ficha" />
   <meta name="twitter:description" content="Ficha pública de un anuncio en Mercado Pecuario." />
   <meta name="twitter:image" content="https://mercadopecuario.com/poster1.jpg" />
 
@@ -43,13 +41,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- IMPORTANT: cache-bust también en CSS -->
-  <link rel="stylesheet" href="styles.css?v=20260123_1" />
-  <link rel="stylesheet" href="ad.css?v=20260123_1" />
+  <!-- Cache-bust -->
+  <link rel="stylesheet" href="styles.css?v=20260123_2" />
+  <link rel="stylesheet" href="ficha.css?v=20260123_2" />
 
-  <!-- Scripts: cache-bust + orden correcto (scripts.js primero) -->
-  <script defer src="scripts.js?v=20260123_1"></script>
-  <script defer src="ad.js?v=20260123_1"></script>
+  <script defer src="scripts.js?v=20260123_2"></script>
+  <script defer src="ficha.js?v=20260123_2"></script>
 </head>
 
 <body>
@@ -82,11 +79,13 @@
 
   <section class="hero hero-compact" id="detalle">
     <div class="hero-content neomorph-in">
-      <h1 id="adTitle">Cargando anuncio…</h1>
-      <p id="adSubtitle">Mercado Pecuario • ficha pública</p>
+      <h1 id="mpTitle">Cargando anuncio…</h1>
+      <p id="mpSubtitle">Mercado Pecuario • ficha pública</p>
 
       <div class="actions-row">
-        <a id="btnWhatsapp" class="btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">Contactar por WhatsApp</a>
+        <a id="btnWhatsapp" class="btn" href="#" target="_blank" rel="noopener noreferrer" style="display:none;">
+          Contactar por WhatsApp
+        </a>
         <a class="btn btn-secondary" href="https://play.google.com/store/apps/details?id=com.mercadopecuario" target="_blank" rel="noopener noreferrer">
           Abrir en Google Play
         </a>
@@ -97,20 +96,20 @@
   </section>
 
   <section class="section" aria-label="Detalle del anuncio">
-    <div class="ad-card neomorph">
-      <div class="ad-grid">
-        <div class="ad-media neomorph-in" id="adMedia">
-          <div class="ad-media-placeholder">Cargando foto…</div>
+    <div class="mp-card neomorph">
+      <div class="mp-grid">
+        <div class="mp-media neomorph-in" id="mpMedia">
+          <div class="mp-media-placeholder">Cargando foto…</div>
         </div>
 
-        <div class="ad-info">
-          <h2 class="ad-h2">Información</h2>
-          <div class="ad-kv" id="adKv"></div>
+        <div class="mp-info">
+          <h2 class="mp-h2">Información</h2>
+          <div class="mp-kv" id="mpKv"></div>
 
-          <h2 class="ad-h2" style="margin-top:1.25rem;">Descripción</h2>
-          <p id="adDesc" class="ad-desc">—</p>
+          <h2 class="mp-h2" style="margin-top:1.25rem;">Descripción</h2>
+          <p id="mpDesc" class="mp-desc">—</p>
 
-          <div class="ad-error" id="adError" style="display:none;"></div>
+          <div class="mp-error" id="mpError" style="display:none;"></div>
         </div>
       </div>
     </div>
