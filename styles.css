@@ -248,3 +248,11 @@ h1, h2 { color: #295b5c; }
 .story-photos figure { margin: 0; }
 .story-photos figcaption { font-size: .85rem; margin-top: .5rem; text-align: center; }
 @media (max-width: 600px) { .image-grid { grid-template-columns: 1fr; } }
+
+/* Video de la historia */
+.story-video { margin: 1.75rem auto 0; max-width: 560px; }
+.story-video video {
+  display: block; width: 100%; height: auto; border-radius: 12px; background: #000;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+}
+.story-video figcaption { font-size: .85rem; margin-top: .5rem; text-align: center; }
