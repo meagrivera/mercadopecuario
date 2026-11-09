@@ -190,3 +190,61 @@ h1, h2 { color: #295b5c; }
   .social-link span { display: none; } /* asegura ocultar texto */
 }
 
+
+/* -------- Secciones de contenido -------- */
+.hero-note { font-size: .95rem !important; margin-top: -1.25rem; }
+
+.stats {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+  text-align: center;
+}
+.stat { display: flex; flex-direction: column; padding: 1.25rem 1rem; }
+.stat strong { font-size: 1.8rem; color: #295b5c; }
+.stat span { font-size: .95rem; }
+
+.steps {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.steps li { display: flex; flex-direction: column; gap: .4rem; padding: 1.25rem; }
+.steps strong { color: #295b5c; }
+
+.section p + p { margin-top: .9rem; }
+
+.quote { margin-top: 1.75rem; padding: 1.5rem 2rem; }
+.quote p { font-size: 1.2rem; font-style: italic; color: #295b5c; }
+.quote footer { margin-top: .5rem; font-size: .95rem; }
+
+.tips { padding-left: 1.25rem; margin: 1rem 0; }
+.tips li + li { margin-top: .4rem; }
+
+.press-blurb { margin: .75rem 0 1rem; padding: 1.25rem 1.5rem; }
+
+.legal { font-size: .95rem; }
+
+.footer-links { margin: .5rem 0; }
+.footer p + p { margin-top: .4rem; }
+
+/* Foto del fundador */
+.founder { float: right; width: 260px; margin: 0 0 1rem 1.5rem; text-align: center; }
+.founder img {
+  width: 100%; height: auto; border-radius: 16px;
+  box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
+}
+.founder figcaption { font-size: .85rem; margin-top: .5rem; }
+#historia::after { content: ""; display: block; clear: both; }
+@media (max-width: 600px) {
+  .founder { float: none; width: 100%; max-width: 320px; margin: 0 auto 1.25rem; }
+}
+
+/* Fotos de la historia */
+.story-photos { clear: both; align-items: start; }
+.story-photos figure { margin: 0; }
+.story-photos figcaption { font-size: .85rem; margin-top: .5rem; text-align: center; }
+@media (max-width: 600px) { .image-grid { grid-template-columns: 1fr; } }
