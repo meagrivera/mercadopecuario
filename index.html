@@ -45,44 +45,169 @@
 
   <!-- Structured Data (JSON-LD) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Mercado Pecuario",
-    "url": "https://mercadopecuario.com/",
-    "inLanguage": "es",
-    "description": "Plataforma gratuita para compra y venta de ganado en Centroamérica, nacida en Nicaragua.",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://mercadopecuario.com/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    },
-    "publisher": {
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
       "@type": "Organization",
+      "@id": "https://mercadopecuario.com/#organizacion",
       "name": "Mercado Pecuario",
+      "url": "https://mercadopecuario.com/",
+      "logo": "https://mercadopecuario.com/logo-mercado-pecuario.png",
+      "description": "App gratuita para comprar y vender ganado y otros animales en Centroamérica, nacida en Nicaragua. Los compradores contactan al vendedor por WhatsApp, sin intermediarios ni comisiones.",
       "foundingDate": "2025",
-      "foundingLocation": "Nicaragua",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Nicaragua"
+      },
+      "areaServed": [
+        "Nicaragua",
+        "Centroamérica"
+      ],
       "email": "info@mercadopecuario.com",
-      "founder": {"@type": "Person", "name": "José Adán Rivera Acevedo", "honorificPrefix": "Dr."},
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://mercadopecuario.com/logo-mercado-pecuario.png"
+      "founder": {
+        "@id": "https://mercadopecuario.com/#fundador"
+      },
+      "award": "Finalista del Hackathon Nicaragua 2025",
+      "sameAs": [
+        "https://play.google.com/store/apps/details?id=com.mercadopecuario",
+        "https://www.facebook.com/share/1B9wBxEZxm/",
+        "https://www.tiktok.com/@mercado.pecuario",
+        "https://www.youtube.com/@MercadoPecuario"
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://mercadopecuario.com/#fundador",
+      "name": "José Adán Rivera Acevedo",
+      "honorificPrefix": "Dr.",
+      "jobTitle": "Fundador de Mercado Pecuario",
+      "nationality": "Nicaragua",
+      "birthPlace": {
+        "@type": "Place",
+        "name": "Matagalpa, Nicaragua"
+      },
+      "description": "Ganadero nicaragüense y doctor en Ciencias de la Computación formado en Alemania.",
+      "image": "https://mercadopecuario.com/fundador-jose-rivera-hd.jpg",
+      "worksFor": {
+        "@id": "https://mercadopecuario.com/#organizacion"
       }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mercadopecuario.com/#sitio",
+      "name": "Mercado Pecuario",
+      "url": "https://mercadopecuario.com/",
+      "inLanguage": "es",
+      "publisher": {
+        "@id": "https://mercadopecuario.com/#organizacion"
+      }
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "Mercado Pecuario",
+      "operatingSystem": "Android",
+      "applicationCategory": "BusinessApplication",
+      "inLanguage": "es",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.mercadopecuario",
+      "installUrl": "https://play.google.com/store/apps/details?id=com.mercadopecuario",
+      "publisher": {
+        "@id": "https://mercadopecuario.com/#organizacion"
+      },
+      "author": {
+        "@id": "https://mercadopecuario.com/#fundador"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "name": "Entrevista sobre Mercado Pecuario en Canal 2 (TVN) – Hackathon Nicaragua 2025",
+      "description": "El padre del fundador explica Mercado Pecuario en una entrevista para Canal 2 (TVN) durante el Hackathon Nicaragua 2025.",
+      "uploadDate": "2025-10-16",
+      "duration": "PT1M20S",
+      "inLanguage": "es",
+      "thumbnailUrl": "https://mercadopecuario.com/hackathon-2025-entrevista.jpg",
+      "contentUrl": "https://mercadopecuario.com/hackathon-2025-entrevista.mp4",
+      "about": {
+        "@id": "https://mercadopecuario.com/#organizacion"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mercadopecuario.com/#preguntas",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es Mercado Pecuario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mercado Pecuario es una aplicación gratuita para Android donde productores publican ganado y otros animales en venta, y los compradores los contactan directamente por WhatsApp, sin intermediarios ni comisiones."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta usar Mercado Pecuario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Publicar y buscar animales es gratis. Mercado Pecuario no cobra comisión por las ventas. Solo tienen costo los anuncios de negocios relacionados, como insumos, transporte o maquinaria."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿En qué países funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mercado Pecuario nació en Nicaragua en 2025 y está disponible para productores y compradores de Centroamérica."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué animales se pueden vender?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bovinos, equinos, cerdos, cabras, ovejas, aves y otros animales. Algunos usuarios incluso han vendido tilapias."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo contacto a un vendedor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cada anuncio tiene un botón para escribirle al vendedor por WhatsApp. El precio y la entrega se acuerdan directamente entre comprador y vendedor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Está disponible para iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Por ahora Mercado Pecuario está disponible solo para teléfonos Android, en Google Play."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Quién creó Mercado Pecuario?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La creó el Dr. José Adán Rivera Acevedo, ganadero nicaragüense nacido en Matagalpa y doctor en Ciencias de la Computación formado en Alemania. El proyecto fue finalista del Hackathon Nicaragua 2025."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cómo anuncio mi negocio en la app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Escribe a info@mercadopecuario.com para recibir información y tarifas de publicidad."
+          }
+        }
+      ]
     }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "Mercado Pecuario",
-    "operatingSystem": "Android",
-    "applicationCategory": "BusinessApplication",
-    "offers": {"@type": "Offer","price": "0","priceCurrency": "USD"},
-    "downloadUrl": "https://play.google.com/store/apps/details?id=com.mercadopecuario",
-    "installUrl": "https://play.google.com/store/apps/details?id=com.mercadopecuario",
-    "publisher": {"@type": "Organization","name": "Mercado Pecuario"}
-  }
+  ]
+}
   </script>
 
   <!-- Fonts & CSS -->
@@ -300,6 +425,45 @@
     </p>
   </section>
 
+  <!-- PREGUNTAS FRECUENTES -->
+  <section class="section" id="preguntas">
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details class="faq-item neomorph">
+        <summary>¿Qué es Mercado Pecuario?</summary>
+        <p>Mercado Pecuario es una aplicación gratuita para Android donde productores publican ganado y otros animales en venta, y los compradores los contactan directamente por WhatsApp, sin intermediarios ni comisiones.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿Cuánto cuesta usar Mercado Pecuario?</summary>
+        <p>Publicar y buscar animales es gratis. Mercado Pecuario no cobra comisión por las ventas. Solo tienen costo los anuncios de negocios relacionados, como insumos, transporte o maquinaria.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿En qué países funciona?</summary>
+        <p>Mercado Pecuario nació en Nicaragua en 2025 y está disponible para productores y compradores de Centroamérica.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿Qué animales se pueden vender?</summary>
+        <p>Bovinos, equinos, cerdos, cabras, ovejas, aves y otros animales. Algunos usuarios incluso han vendido tilapias.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿Cómo contacto a un vendedor?</summary>
+        <p>Cada anuncio tiene un botón para escribirle al vendedor por WhatsApp. El precio y la entrega se acuerdan directamente entre comprador y vendedor.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿Está disponible para iPhone?</summary>
+        <p>Por ahora Mercado Pecuario está disponible solo para teléfonos Android, en Google Play.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿Quién creó Mercado Pecuario?</summary>
+        <p>La creó el Dr. José Adán Rivera Acevedo, ganadero nicaragüense nacido en Matagalpa y doctor en Ciencias de la Computación formado en Alemania. El proyecto fue finalista del Hackathon Nicaragua 2025.</p>
+      </details>
+      <details class="faq-item neomorph">
+        <summary>¿Cómo anuncio mi negocio en la app?</summary>
+        <p>Escribe a info@mercadopecuario.com para recibir información y tarifas de publicidad.</p>
+      </details>
+    </div>
+  </section>
+
   <!-- PRENSA -->
   <section class="section" id="prensa">
     <h2>Prensa y medios</h2>
@@ -411,6 +575,7 @@
     <p class="footer-links">
       <a href="#terminos">Términos de Uso</a> ·
       <a href="#politica">Política de Privacidad</a> ·
+      <a href="#preguntas">Preguntas frecuentes</a> ·
       <a href="#prensa">Prensa</a> ·
       <a href="mailto:info@mercadopecuario.com">info@mercadopecuario.com</a>
     </p>

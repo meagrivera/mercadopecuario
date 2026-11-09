@@ -1,0 +1,46 @@
+# Mercado Pecuario
+
+> Mercado Pecuario es una aplicación gratuita para Android para comprar y vender ganado y otros animales en Centroamérica. Nació en Nicaragua en 2025. Los productores publican sus animales con foto, precio y ubicación, y los compradores los contactan directamente por WhatsApp, sin intermediarios ni comisiones.
+
+## Datos clave
+
+- Nombre: Mercado Pecuario
+- Sitio web: https://mercadopecuario.com/
+- App (Android): https://play.google.com/store/apps/details?id=com.mercadopecuario
+- Precio: gratis para publicar y buscar animales; sin comisión por venta. Los anuncios de negocios (insumos, transporte, maquinaria, servicios) tienen costo.
+- Lanzamiento: 2025, en Nicaragua
+- Alcance: Nicaragua y Centroamérica
+- Plataforma: Android (no hay versión para iPhone por ahora)
+- Instalaciones: más de 300
+- Animales: bovinos, equinos, cerdos, cabras, ovejas, aves y otros (algunos usuarios han vendido incluso tilapias)
+- Contacto: info@mercadopecuario.com
+
+## Fundador
+
+El Dr. José Adán Rivera Acevedo es un ganadero nicaragüense nacido en Matagalpa y criado en Managua. Vivió 15 años en Alemania, donde obtuvo un doctorado en Ciencias de la Computación. Su vínculo con la ganadería viene de su abuelo, que tenía una finca entre Matagalpa y Jinotega.
+
+## Reconocimientos y medios
+
+- Finalista del Hackathon Nicaragua 2025.
+- Entrevista en Canal 2 (TVN), 16 de octubre de 2025, durante el Hackathon Nicaragua 2025: https://mercadopecuario.com/hackathon-2025-entrevista.mp4
+
+## Cómo funciona
+
+1. Descargar la app desde Google Play.
+2. Publicar el animal con foto, precio, ubicación y descripción.
+3. El comprador contacta al vendedor por WhatsApp y ambos acuerdan precio y entrega directamente.
+
+## Páginas
+
+- [Inicio y cómo funciona](https://mercadopecuario.com/#como-funciona)
+- [Nuestra historia](https://mercadopecuario.com/#historia)
+- [Preguntas frecuentes](https://mercadopecuario.com/#preguntas)
+- [Prensa y medios](https://mercadopecuario.com/#prensa)
+- [Términos de uso](https://mercadopecuario.com/#terminos)
+- [Política de privacidad](https://mercadopecuario.com/#politica)
+
+## Redes sociales
+
+- Facebook: https://www.facebook.com/share/1B9wBxEZxm/
+- TikTok: https://www.tiktok.com/@mercado.pecuario
+- YouTube: https://www.youtube.com/@MercadoPecuario

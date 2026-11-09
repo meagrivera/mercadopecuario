@@ -256,3 +256,9 @@ h1, h2 { color: #295b5c; }
   box-shadow: 8px 8px 16px #d1d9e6, -8px -8px 16px #ffffff;
 }
 .story-video figcaption { font-size: .85rem; margin-top: .5rem; text-align: center; }
+
+/* Preguntas frecuentes */
+.faq { display: flex; flex-direction: column; gap: .75rem; }
+.faq-item { padding: 1rem 1.25rem; }
+.faq-item summary { cursor: pointer; font-weight: 700; color: #295b5c; }
+.faq-item p { margin-top: .6rem; }
