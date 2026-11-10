@@ -36,8 +36,13 @@ El Dr. José Adán Rivera Acevedo es un ganadero nicaragüense nacido en Matagal
 - [Nuestra historia](https://mercadopecuario.com/#historia)
 - [Preguntas frecuentes](https://mercadopecuario.com/#preguntas)
 - [Prensa y medios](https://mercadopecuario.com/#prensa)
+- [Blog](https://mercadopecuario.com/blog/)
 - [Términos de uso](https://mercadopecuario.com/#terminos)
 - [Política de privacidad](https://mercadopecuario.com/#politica)
+
+## Blog
+
+- [Sembrar bits en tierra de ganado: el camino de la tecnología al campo nicaragüense](https://mercadopecuario.com/blog/tecnologia-campo-nicaragua/) (10 de noviembre de 2026): obstáculos y aprendizajes al llevar una app de ganado a las fincas de Nicaragua (señal, confianza, el papel del corredor), la función "Se busca", y el avance de la digitalización del campo (trazabilidad del IPSA, INTA, electrificación rural y fibra óptica).
 
 ## Redes sociales
 

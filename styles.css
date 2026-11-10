@@ -262,3 +262,45 @@ h1, h2 { color: #295b5c; }
 .faq-item { padding: 1rem 1.25rem; }
 .faq-item summary { cursor: pointer; font-weight: 700; color: #295b5c; }
 .faq-item p { margin-top: .6rem; }
+
+/* Utilidades compartidas */
+a.logo { color: #2f3e36; }
+a.logo:hover { text-decoration: none; }
+.actions-row { display: flex; gap: .75rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem; }
+.btn.btn-secondary { background-color: #295b5c; }
+.btn.btn-secondary:hover { background-color: #204748; }
+.navbar a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+
+/* -------- Blog -------- */
+.blog-title { font-size: 2rem; margin-bottom: .5rem; }
+.blog-intro { margin-bottom: 2rem; }
+.post-list { display: grid; gap: 1.5rem; }
+.post-card { display: grid; grid-template-columns: 300px 1fr; gap: 1.5rem; padding: 1.25rem; align-items: center; }
+.post-card-img img { width: 100%; height: auto; border-radius: 10px; display: block; }
+.post-card h2 { font-size: 1.3rem; line-height: 1.3; margin: .25rem 0 .6rem; }
+.post-card-meta, .post-card-author { font-size: .85rem; color: #5b6b62; }
+.post-card-author { margin-top: .6rem; }
+@media (max-width: 700px) { .post-card { grid-template-columns: 1fr; } }
+
+.post { max-width: 720px; margin: 0 auto; padding: 2.5rem 1.25rem 1rem; font-size: 1.05rem; line-height: 1.75; }
+.post h1 { font-size: 2.1rem; line-height: 1.25; margin: .5rem 0 1rem; }
+.post h2 { font-size: 1.5rem; margin: 2.25rem 0 .75rem; }
+.post h3 { font-size: 1.15rem; color: #295b5c; margin: 1.5rem 0 .5rem; }
+.post p + p { margin-top: .9rem; }
+.post ul, .post ol { padding-left: 1.4rem; margin: .75rem 0; }
+.post li + li { margin-top: .4rem; }
+.post-breadcrumb { font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: #6e945d; }
+.post-lead { font-size: 1.2rem; font-style: italic; color: #4a5a52; }
+.post-byline { display: flex; align-items: center; gap: .75rem; margin: 1.25rem 0 1.5rem; font-size: .95rem; line-height: 1.5; }
+.post-byline img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.post-figure { margin: 1.5rem 0; }
+.post-figure img { width: 100%; height: auto; border-radius: 12px; display: block; box-shadow: 6px 6px 12px #d1d9e6; }
+.post-figure figcaption { font-size: .8rem; color: #5b6b62; margin-top: .5rem; line-height: 1.5; }
+.post-hero { margin-top: 0; }
+.post .quote { margin: 1.75rem 0; }
+.post-cta { margin: 2.5rem 0 2rem; text-align: center; }
+.post-cta h2 { margin-top: 0; font-size: 1.35rem; }
+.post-cta-note { font-size: .9rem; margin-top: 1rem; }
+.post-meta { border-top: 1px solid #d1d9e6; padding-top: 1.25rem; font-size: .9rem; }
+.post-meta p + p { margin-top: .6rem; }
+@media (max-width: 600px) { .post h1 { font-size: 1.6rem; } .post { font-size: 1rem; } }
