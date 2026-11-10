@@ -65,6 +65,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
   <script defer src="/scripts.js"></script>
+  <script defer src="/blog/blog.js"></script>
 </head>
 
 <body>
@@ -107,6 +108,39 @@
           Por el equipo de <strong>Mercado Pecuario</strong><br />
           Matagalpa, <time datetime="2026-11-10">noviembre de 2026</time>
         </p>
+      </div>
+
+      <div class="tts-player neomorph" hidden>
+        <button type="button" class="tts-play" aria-pressed="false">
+          <svg class="tts-icon tts-icon-play" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+          <svg class="tts-icon tts-icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+          <span class="tts-play-label">Escuchar el artículo</span>
+        </button>
+        <button type="button" class="tts-stop" hidden aria-label="Detener la lectura">
+          <svg class="tts-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6 6h12v12H6z"/></svg>
+        </button>
+        <label class="tts-rate-label">Velocidad
+          <select class="tts-rate">
+            <option value="0.85">Lenta</option>
+            <option value="1" selected>Normal</option>
+            <option value="1.2">Rápida</option>
+            <option value="1.4">Muy rápida</option>
+          </select>
+        </label>
+        <div class="tts-progress" aria-hidden="true"><span></span></div>
+        <p class="tts-status" aria-live="polite"></p>
+      </div>
+
+      <div class="share-bar share-top" role="group" aria-label="Compartir este artículo">
+        <span class="share-title">Compartir:</span>
+        <a class="share-btn share-whatsapp" href="https://wa.me/?text=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado%20https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span class="share-label">WhatsApp</span></a>
+        <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 22v-8h3l.6-4H13V7.2c0-1.1.3-1.8 1.9-1.8H17V2.1C16.6 2 15.5 2 14.2 2 11.5 2 9.6 3.7 9.6 6.8V10H7v4h2.6v8h3.4Z"/></svg><span class="share-label">Facebook</span></a>
+        <a class="share-btn share-x" href="https://x.com/intent/post?url=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/&amp;text=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado" target="_blank" rel="noopener noreferrer" aria-label="Compartir en X"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg><span class="share-label">X</span></a>
+        <a class="share-btn share-telegram" href="https://t.me/share/url?url=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/&amp;text=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Telegram"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6Z"/></svg><span class="share-label">Telegram</span></a>
+        <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en LinkedIn"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.75Z"/></svg><span class="share-label">LinkedIn</span></a>
+        <a class="share-btn share-email" href="mailto:?subject=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado&amp;body=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado%0A%0Ahttps%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Correo"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.2V17h16V7.2l-8 5.6-8-5.6ZM5.4 7l6.6 4.6L18.6 7H5.4Z"/></svg><span class="share-label">Correo</span></a>
+        <button type="button" class="share-btn share-copy" data-share-copy="https://mercadopecuario.com/blog/evolucion-compra-ganado/"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0Zm-2.1 4.9a3.5 3.5 0 0 1-2.5-6l2.1-2.1a1 1 0 1 1 1.4 1.4L7.4 13.7a1.5 1.5 0 0 0 2.1 2.1l2.1-2.1a1 1 0 1 1 1.4 1.4L11 17.3a3.5 3.5 0 0 1-2.5 1ZM15.5 15a1 1 0 0 1-.7-1.7l2.1-2.1a1.5 1.5 0 0 0-2.1-2.1l-2.1 2.1a1 1 0 1 1-1.4-1.4L13.4 7.7a3.5 3.5 0 0 1 4.9 4.9l-2.1 2.1a1 1 0 0 1-.7.3Z"/></svg><span class="share-label">Copiar enlace</span></button>
+        <button type="button" class="share-btn share-native" data-share-native data-url="https://mercadopecuario.com/blog/evolucion-compra-ganado/" data-title="Del corral a la pantalla: cómo ha cambiado la compra de ganado" hidden><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1Z"/></svg><span class="share-label">Más opciones</span></button>
       </div>
 
       <figure class="post-figure post-hero">
@@ -304,6 +338,19 @@
           <a href="mailto:info@mercadopecuario.com?subject=C%C3%B3mo%20compraba%20ganado%20mi%20familia">info@mercadopecuario.com</a>.
         </p>
       </aside>
+
+      <p class="share-cta">¿Te gustó? Compártelo con otros ganaderos:</p>
+      <div class="share-bar share-bottom" role="group" aria-label="Compartir este artículo">
+        <span class="share-title">Compartir:</span>
+        <a class="share-btn share-whatsapp" href="https://wa.me/?text=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado%20https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en WhatsApp"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg><span class="share-label">WhatsApp</span></a>
+        <a class="share-btn share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Facebook"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M13 22v-8h3l.6-4H13V7.2c0-1.1.3-1.8 1.9-1.8H17V2.1C16.6 2 15.5 2 14.2 2 11.5 2 9.6 3.7 9.6 6.8V10H7v4h2.6v8h3.4Z"/></svg><span class="share-label">Facebook</span></a>
+        <a class="share-btn share-x" href="https://x.com/intent/post?url=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/&amp;text=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado" target="_blank" rel="noopener noreferrer" aria-label="Compartir en X"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.8 3h3.1l-6.8 7.7L22 21h-6.2l-4.9-6.4L5.3 21H2.2l7.2-8.3L1.8 3h6.4l4.4 5.8L17.8 3Zm-1.1 16.2h1.7L7.4 4.7H5.6l11.1 14.5Z"/></svg><span class="share-label">X</span></a>
+        <a class="share-btn share-telegram" href="https://t.me/share/url?url=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/&amp;text=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Telegram"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21.9 4.3 18.7 19.4c-.2 1.1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.3-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 13 1.4 11.5c-1-.3-1.1-1 .2-1.5L20.5 2.7c.9-.3 1.6.2 1.4 1.6Z"/></svg><span class="share-label">Telegram</span></a>
+        <a class="share-btn share-linkedin" href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en LinkedIn"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.75Z"/></svg><span class="share-label">LinkedIn</span></a>
+        <a class="share-btn share-email" href="mailto:?subject=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado&amp;body=Del%20corral%20a%20la%20pantalla%3A%20c%C3%B3mo%20ha%20cambiado%20la%20compra%20de%20ganado%0A%0Ahttps%3A//mercadopecuario.com/blog/evolucion-compra-ganado/" target="_blank" rel="noopener noreferrer" aria-label="Compartir en Correo"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2.2V17h16V7.2l-8 5.6-8-5.6ZM5.4 7l6.6 4.6L18.6 7H5.4Z"/></svg><span class="share-label">Correo</span></a>
+        <button type="button" class="share-btn share-copy" data-share-copy="https://mercadopecuario.com/blog/evolucion-compra-ganado/"><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10.6 13.4a1 1 0 0 1 0-1.4l3.5-3.5a1 1 0 1 1 1.4 1.4L12 13.4a1 1 0 0 1-1.4 0Zm-2.1 4.9a3.5 3.5 0 0 1-2.5-6l2.1-2.1a1 1 0 1 1 1.4 1.4L7.4 13.7a1.5 1.5 0 0 0 2.1 2.1l2.1-2.1a1 1 0 1 1 1.4 1.4L11 17.3a3.5 3.5 0 0 1-2.5 1ZM15.5 15a1 1 0 0 1-.7-1.7l2.1-2.1a1.5 1.5 0 0 0-2.1-2.1l-2.1 2.1a1 1 0 1 1-1.4-1.4L13.4 7.7a3.5 3.5 0 0 1 4.9 4.9l-2.1 2.1a1 1 0 0 1-.7.3Z"/></svg><span class="share-label">Copiar enlace</span></button>
+        <button type="button" class="share-btn share-native" data-share-native data-url="https://mercadopecuario.com/blog/evolucion-compra-ganado/" data-title="Del corral a la pantalla: cómo ha cambiado la compra de ganado" hidden><svg class="share-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1Z"/></svg><span class="share-label">Más opciones</span></button>
+      </div>
 
       <footer class="post-meta">
         <p><em>Etiquetas: compraventa de ganado, subastas ganaderas, ganado menor, Nicaragua, tecnología rural</em></p>
