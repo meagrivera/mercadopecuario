@@ -366,3 +366,22 @@ a.logo:hover { text-decoration: none; }
 .tts-progress span { display: block; height: 100%; width: 0; background: #6e945d; transition: width .3s ease; }
 .tts-status { flex: 1 1 100%; font-size: .8rem; color: #5b6b62; margin: 0; min-height: 1em; }
 .post .tts-active { background: #e4eedb; box-shadow: 0 0 0 6px #e4eedb; border-radius: 4px; transition: background .2s ease; }
+
+/* -------- Microapps -------- */
+.app-card { padding: 1.75rem; }
+.app-card h3 { color: #295b5c; font-size: 1.1rem; margin: 1.25rem 0 .5rem; }
+.app-card ul { padding-left: 1.3rem; }
+.app-card li + li { margin-top: .4rem; }
+.app-head { display: flex; align-items: center; gap: 1.25rem; margin-bottom: 1.25rem; }
+.app-icon { width: 96px; height: 96px; border-radius: 22px; flex-shrink: 0; box-shadow: 6px 6px 12px #d1d9e6; }
+.app-head h2 { font-size: 1.6rem; margin: 0; line-height: 1.2; }
+.app-meta { font-size: .85rem; color: #5b6b62; margin-top: .25rem; }
+.app-downloads { margin-top: .4rem; font-size: .95rem; color: #2f3e36; }
+.app-downloads-num { font-size: 1.3rem; color: #6e945d; }
+.app-tagline { font-size: 1.2rem; font-weight: 700; color: #295b5c; margin-bottom: .4rem; }
+.app-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1.25rem 0 .75rem; }
+.app-badges span { background: #d6e4e5; color: #295b5c; font-size: .8rem; font-weight: 700; padding: .3rem .75rem; border-radius: 999px; }
+.app-note { font-size: .9rem; font-style: italic; color: #5b6b62; }
+.app-actions { margin: 1.5rem 0 1rem; }
+.app-install { font-size: .9rem; color: #4a5a52; }
+@media (max-width: 500px) { .app-card { padding: 1.25rem; } .app-icon { width: 72px; height: 72px; border-radius: 16px; } }
