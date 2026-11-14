@@ -51,6 +51,7 @@ El Dr. José Adán Rivera Acevedo es un ganadero nicaragüense nacido en Matagal
 ## Microapps
 
 - [Vendo mi vaca](https://mercadopecuario.com/microapps/#vendo-mi-vaca) (Android, gratis, funciona sin internet): con 6 preguntas sencillas sobre una vaca (preñez, tiempo de parida, leche, dientes, ubre y otros problemas) dice si conviene vender, esperar o quedarse con ella, y por qué; aconseja el mejor momento para vender según verano o invierno; calcula el peso con cinta métrica, sin báscula; y prepara el anuncio para Mercado Pecuario. Hecha para fincas de doble propósito en Nicaragua.
+- [¿Pacas o potrero?](https://mercadopecuario.com/microapps/#pacas-o-potrero) (Android, gratis, funciona sin internet): con preguntas sencillas (cuántos animales, cuánto falta para que vuelva el pasto, precio de la paca) dice qué sale más barato para alimentar al ganado en el verano: comprar pacas, alquilar un potrero o las dos cosas, y cuánto cuesta en córdobas; calcula cuántas pacas faltarían, cuántos días debe durar el pasto y el alquiler máximo que conviene pagar; avisa si el agua del potrero no está confirmada; y prepara un resumen para WhatsApp. Hecha para Nicaragua.
 
 ## Redes sociales
 
