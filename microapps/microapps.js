@@ -1,9 +1,50 @@
-// Contador de descargas de las microapps.
+// microapps.js — Compartir y contador de descargas de las microapps.
+// Contador:
 // Combina dos fuentes y muestra la cifra más alta:
 //  1. Clics en el botón "Descargar", contados al instante con Abacus (abacus.jasoncameron.dev).
 //  2. Descargas del APK en los releases de GitHub (exactas, pero GitHub las actualiza con retraso).
 //     Se suman todas las versiones cuyo archivo empieza con el nombre de la app (vendo-mi-vaca*.apk).
 (function () {
+  // Enlaces viejos (/microapps/#vendo-mi-vaca) -> página propia de la app
+  var hash = location.hash.replace('#', '');
+  if (/^\/microapps\/?(index\.html)?$/.test(location.pathname) && /^[a-z-]+$/.test(hash) &&
+      document.querySelector('.app-card[id="' + hash + '"]')) {
+    location.replace('/microapps/' + hash + '/');
+    return;
+  }
+
+  // Botones de compartir
+  document.querySelectorAll('[data-share-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var url = btn.getAttribute('data-share-copy');
+      var label = btn.querySelector('.share-label');
+      var done = function () {
+        if (!label) return;
+        var old = label.textContent;
+        label.textContent = '¡Copiado!';
+        setTimeout(function () { label.textContent = old; }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(done, function () { window.prompt('Copia el enlace:', url); });
+      } else {
+        window.prompt('Copia el enlace:', url);
+      }
+    });
+  });
+
+  if (navigator.share) {
+    document.querySelectorAll('[data-share-native]').forEach(function (btn) {
+      btn.hidden = false;
+      btn.addEventListener('click', function () {
+        navigator.share({
+          title: btn.getAttribute('data-title'),
+          text: btn.getAttribute('data-text'),
+          url: btn.getAttribute('data-url')
+        }).catch(function () {});
+      });
+    });
+  }
+
   var GITHUB = 'https://api.github.com/repos/meagrivera/mercadopecuario/releases?per_page=100';
   var ABACUS = 'https://abacus.jasoncameron.dev';
   var NS = 'mercadopecuario.com';
